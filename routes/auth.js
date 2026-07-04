@@ -15,6 +15,7 @@ const axios = require("axios");
 const authMiddleware = require("../middleware/authMiddleware");
 
 const sendOTP = require("../utils/sendOTP");
+const UAParser = require("ua-parser-js");
 // ================= INCIDENT HELPER =================
 async function createIncident({
     userId,
@@ -239,10 +240,19 @@ router.get("/protected", authMiddleware, async (req, res) => {
             ip = ip.split(",")[0].trim();
         }
 
-        const device =
-            (req.headers["user-agent"] || "Unknown Device") +
-            "-" +
-            ip;
+        const parser = new UAParser(req.headers["user-agent"]);
+
+const browser =
+    parser.getBrowser().name || "Unknown Browser";
+
+const os =
+    parser.getOS().name || "Unknown OS";
+
+const deviceType =
+    parser.getDevice().type || "Desktop";
+
+const device =
+    browser + " - " + os;
 
         let location = "Unknown";
 
@@ -375,16 +385,25 @@ router.get("/protected", authMiddleware, async (req, res) => {
 
             await new AccessLog({
 
-                userId: req.user.id,
-                ip,
-                device,
-                location
+    userId: req.user.id,
 
-            }).save();
+    ip,
+
+    browser,
+
+    os,
+
+    device,
+
+    deviceType,
+
+    location
+
+}).save();
 
         }
-
         // HIGH RISK
+        /*
         if (risk === "HIGH") {
 
             await createIncident({
@@ -408,6 +427,7 @@ router.get("/protected", authMiddleware, async (req, res) => {
             });
 
         }
+        */
 
         res.json({
 
