@@ -18,7 +18,10 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((err) => {
     console.log(err);
 });
-
+app.use((req, res, next) => {
+    res.setHeader("X-API-Version", "1.0.0");
+    next();
+});
 // ================= ROUTES =================
 const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin");
