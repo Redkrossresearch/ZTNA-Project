@@ -19,6 +19,6 @@
     "express-validator": "^7.3.2",
     "helmet": "^8.2.0",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.6.3"
+    "mongoose": "^9.6.3","geoip-lite":"^1.4.10","nodemailer":"^6.9.14"
   }
 }
