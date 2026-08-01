@@ -1,20 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ZeroTrust</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZeroTrust Network Access</title>
 
   <script>
-    // ✅ safe redirect based on auth
-    const token = localStorage.getItem('ztna_token');
+    // ================= GEOLOCATION =================
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          localStorage.setItem("user_latitude", position.coords.latitude);
+          localStorage.setItem("user_longitude", position.coords.longitude);
+          console.log("Location captured successfully.");
+        },
+        (error) => {
+          console.log("Location access denied.");
+        }
+      );
+    }
+
+    // ================= AUTH REDIRECT =================
+    const token = localStorage.getItem("ztna_token");
 
     if (token) {
-      window.location.href = 'dashboard.html';
+      window.location.href = "dashboard.html";
     } else {
-      window.location.href = 'login.html';
+      window.location.href = "login.html";
     }
   </script>
 
 </head>
-<body></body>
+<body>
+
+</body>
 </html>
