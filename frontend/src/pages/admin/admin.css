@@ -1,0 +1,85 @@
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.admin-toolbar input,
+.admin-toolbar select {
+  padding: 9px 12px;
+  border: 1px solid #d3dae4;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+}
+
+.admin-toolbar input:focus,
+.admin-toolbar select:focus {
+  border-color: #0e9394;
+}
+
+.admin-toolbar-spacer {
+  flex: 1;
+}
+
+.btn-secondary {
+  background: #eef1f5;
+  color: #0b1f3a;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e2e7ee;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.row-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.row-actions select {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #d3dae4;
+  font-size: 12px;
+}
+
+.row-actions button {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #eef1f5;
+  color: #0b1f3a;
+}
+
+.row-actions button.danger {
+  background: #fdecec;
+  color: #a12a2a;
+}
+
+.row-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.self-row-note {
+  font-size: 11px;
+  color: #8a97a8;
+  font-style: italic;
+}

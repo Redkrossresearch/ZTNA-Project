@@ -1,0 +1,138 @@
+/* ---------- Toasts ---------- */
+.toast-stack {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  max-width: 320px;
+}
+
+.toast {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(11, 31, 58, 0.25);
+  cursor: pointer;
+  animation: toast-in 0.18s ease-out;
+}
+
+.toast-success {
+  background: #0e6b5f;
+}
+
+.toast-error {
+  background: #a12a2a;
+}
+
+.toast-info {
+  background: #12315c;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .toast-stack {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+}
+
+/* ---------- Skeleton loaders ---------- */
+.skeleton {
+  background: linear-gradient(90deg, #eef1f5 25%, #e4e9ef 37%, #eef1f5 63%);
+  background-size: 400% 100%;
+  animation: skeleton-pulse 1.4s ease infinite;
+  border-radius: 6px;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.skeleton-line {
+  height: 14px;
+  margin-bottom: 10px;
+}
+
+.skeleton-row {
+  display: flex;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f5f8;
+}
+
+.skeleton-row .skeleton {
+  height: 14px;
+  flex: 1;
+}
+
+.skeleton-card {
+  height: 90px;
+}
+
+/* ---------- Accessibility ---------- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: #0e9394;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 0 0 8px 0;
+  z-index: 200;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.skip-link:focus {
+  left: 0;
+  top: 0;
+}
+
+:focus-visible {
+  outline: 2px solid #0e9394;
+  outline-offset: 2px;
+}
+
+/* ---------- Error boundary / full-page error ---------- */
+.error-boundary-page {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  gap: 12px;
+}
+
+.error-boundary-page h2 {
+  color: #0b1f3a;
+  margin: 0;
+}
+
+.error-boundary-page p {
+  color: #5b6b82;
+  max-width: 420px;
+  margin: 0;
+}
